@@ -1,0 +1,198 @@
+
+{% extends "base.html" %}
+
+{% block title %}Мальвина и Вселенная проекта — Drone City{% endblock %}
+
+{% block content %}
+
+<!-- Стили для анимации выезда блоков -->
+<style>
+@keyframes slideFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-80px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideFromRight {
+    from {
+        opacity: 0;
+        transform: translateX(80px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.animate-left {
+    animation: slideFromLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-right {
+    animation: slideFromRight 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+</style>
+
+<div class="container my-5">
+    <!-- Кнопка назад -->
+    <div class="mb-4">
+        <a href="{{ url_for('index') }}" class="btn rounded-pill px-4 py-2" style="
+            background: rgba(15, 22, 42, 0.6);
+            border: 1px solid rgba(43, 202, 255, 0.4);
+            color: #2bcaff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        ">
+            <i class="fas fa-arrow-left me-2"></i> На главную
+        </a>
+    </div>
+
+    <!-- Основной блок карточки Мальвины (выезжает слева) -->
+    <div class="row align-items-center justify-content-center py-4 rounded-4 mb-5 animate-left" style="background: rgba(10, 15, 30, 0.85); border: 1px solid rgba(43, 202, 255, 0.2); backdrop-filter: blur(10px);">
+
+        <!-- Фото персонажа -->
+        <div class="col-md-4 text-center mb-4 mb-md-0">
+            <img src="{{ url_for('static', filename='img/mal.jpg') }}"
+                 alt="Мальвина"
+                 class="rounded-3 img-fluid shadow-lg"
+                 style="max-height: 400px; object-fit: cover; border: 1px solid rgba(43, 202, 255, 0.4);">
+        </div>
+
+        <!-- Информация и описание -->
+        <div class="col-md-7 px-4">
+            <div class="d-inline-block px-3 py-1 rounded-pill mb-3" style="background: rgba(43, 202, 255, 0.1); border: 1px solid #2bcaff; color: #2bcaff; font-size: 0.9rem;">
+                Дизайнер проекта (Человек)
+            </div>
+
+            <h1 class="fw-bold text-white mb-3">Мальвина</h1>
+
+            <p class="text-light opacity-75 mb-4" style="line-height: 1.6;">
+                Девушка с голубыми волосами, талантливый дизайнер и создатель визуального пространства в мире будущего. Она гуляет по вечернему Детройту, погруженная в свои мысли, пока случайное столкновение на мосту с беглой киборг-девушкой не переворачивает всю ее привычную жизнь.
+            </p>
+
+            <div class="p-3 rounded-3" style="background: rgba(15, 22, 42, 0.8); border: 1px solid rgba(43, 202, 255, 0.2);">
+                <span class="text-info fw-bold">Статус:</span> <span class="text-light">Ключевой персонаж / Свидетель инцидента</span>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ДОП. БЛОКИ: ЭММА И ЭНТОНИ -->
+    <div class="row g-4 mb-5">
+
+        <!-- Карточка Эммы (выезжает слева) -->
+        <div class="col-md-6 animate-left">
+            <div class="p-4 rounded-4 h-100 d-flex flex-column justify-content-between" style="background: rgba(10, 15, 30, 0.85); border: 1px solid rgba(255, 75, 75, 0.3); backdrop-filter: blur(10px);">
+                <div>
+                    <div class="text-center mb-3">
+                        <img src="{{ url_for('static', filename='img/emma.jpg') }}" alt="Эмма" class="rounded-3 img-fluid shadow-lg" style="max-height: 250px; object-fit: cover; border: 1px solid rgba(255, 75, 75, 0.4);">
+                    </div>
+                    <div class="d-inline-block px-3 py-1 rounded-pill mb-3" style="background: rgba(255, 75, 75, 0.1); border: 1px solid #ff4b4b; color: #ff4b4b; font-size: 0.9rem;">
+                        Единственный киборг
+                    </div>
+                    <h3 class="fw-bold text-white mb-3">Эмма</h3>
+                    <p class="text-light opacity-75" style="line-height: 1.6;">
+                        Девушка-киборг, бегущая от преследования желтых дронов. На пределе человеческих возможностей она прорезает толпы мегаполиса, скрывая под кожей искрящиеся микросхемы и гидравлические трубки. Ее взгляд — это холодная, острая ненависть и скрытая угроза. Находит убежище в заброшенном пространстве между этажами.
+                    </p>
+                </div>
+                <div class="p-3 rounded-3 mt-3" style="background: rgba(15, 22, 42, 0.8); border: 1px solid rgba(255, 75, 75, 0.2);">
+                    <span class="text-danger fw-bold">Статус:</span> <span class="text-light">В розыске / В бегах</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Карточка Энтони (выезжает справа) -->
+        <div class="col-md-6 animate-right">
+            <div class="p-4 rounded-4 h-100 d-flex flex-column justify-content-between" style="background: rgba(10, 15, 30, 0.85); border: 1px solid rgba(43, 202, 255, 0.3); backdrop-filter: blur(10px);">
+                <div>
+                    <div class="text-center mb-3">
+                        <img src="{{ url_for('static', filename='img/anton.jpg') }}" alt="Энтони" class="rounded-3 img-fluid shadow-lg" style="max-height: 250px; object-fit: cover; border: 1px solid rgba(43, 202, 255, 0.4);">
+                    </div>
+                    <div class="d-inline-block px-3 py-1 rounded-pill mb-3" style="background: rgba(43, 202, 255, 0.1); border: 1px solid #2bcaff; color: #2bcaff; font-size: 0.9rem;">
+                        Инженер / Техник
+                    </div>
+                    <h3 class="fw-bold text-white mb-3">Энтони</h3>
+                    <p class="text-light opacity-75" style="line-height: 1.6;">
+                        Специалист по закрытым системным узлам и модернизации оборудования. Тот, кто понимает, как устроена изнанка этого высокотехнологичного муравейника, и помогает балансировать между старыми фундаментами города и цифровыми корпорациями.
+                    </p>
+                </div>
+                <div class="p-3 rounded-3 mt-3" style="background: rgba(15, 22, 42, 0.8); border: 1px solid rgba(43, 202, 255, 0.2);">
+                    <span class="text-info fw-bold">Статус:</span> <span class="text-light">Поддержка сети / Инженер</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- БЛОК СЛИВА ПЕРВОЙ ГЛАВЫ -->
+    <div class="p-5 rounded-4 shadow-lg text-white" style="background: rgba(10, 15, 30, 0.9); border: 1px solid rgba(43, 202, 255, 0.4); backdrop-filter: blur(12px);">
+
+        <div class="text-center mb-4">
+            <span class="text-uppercase tracking-widest text-info small fw-bold">Эксклюзивный доступ</span>
+            <h2 class="fw-bold text-white mt-1">Проект: Взгляд Эммы — Глава 1</h2>
+            <p class="text-light opacity-75 small">Секретные материалы и текстовые архивы сценария</p>
+        </div>
+
+        <div class="chapter-content p-4 rounded-3" style="background: rgba(15, 22, 42, 0.7); border: 1px solid rgba(43, 202, 255, 0.2); font-family: 'Roboto Slab', serif; line-height: 1.8;">
+
+            <h5 class="text-info fw-bold mb-3">СЦЕНА 1. НОЧНОЙ МЕГАПОЛИС. МОСТ.</h5>
+            <p class="text-light opacity-75"><strong>ИНТ. НОЧНОЙ ДЕТРОЙТ — ВЕЧЕР</strong><br>
+            Город утопает в неоновом свете. Вывески пульсируют, отражаясь в стеклянных поверхностях зданий. Улицы заполнены толпами людей, которые, не глядя под ноги, общаются через голографические интерфейсы своих гаджетов. Атмосфера высокотехнологичного муравейника.</p>
+
+            <p class="text-light opacity-75"><strong>ЭКСТ. ГОРОДСКОЙ МОСТ — ВЕЧЕР</strong><br>
+            ДЕВУШКА С ГОЛУБЫМИ ВОЛОСАМИ (Мальвина) идет по мосту. Она в наушниках, отрешенно смотрит на город, залитый искусственным светом. На лице — легкая тень грусти.<br>
+            <em>МАЛЬВИНА (в наушники, задумчиво):</em> Да, я почти на месте... Просто решила пройти пешком, тут сегодня как-то... непривычно тихо.</p>
+
+            <p class="text-light opacity-75">Внезапно динамика кадра меняется.</p>
+
+            <p class="text-light opacity-75"><strong>ЭКСТ. УЛИЦА ПОД МОСТОМ / ПЕШЕХОДНАЯ ЗОНА — ВЕЧЕР</strong><br>
+            ДЕВУШКА-КИБОРГ (Эмма) стремительно прорезает толпу, расталкивая прохожих. Она бежит на пределе человеческих возможностей.<br>
+            Сзади её преследуют ДВА ЖЕЛТЫХ ДРОНА. Они летят низко, сканируя пространство.<br>
+            <em>ДРОНЫ (синтезированный, холодный голос):</em> СТОП. СТОП. ОСТАНОВИТЕСЬ.</p>
+
+            <p class="text-light opacity-75"><strong>ЭКСТ. МОСТ — ВЕЧЕР</strong><br>
+            Девушка-киборг взлетает на мост, не сбавляя скорости. Она врезается в Мальвину. Обе падают на бетон, переплетаясь конечностями.<br>
+            Секунда тишины. Они смотрят друг другу в глаза. Взгляд Голубоволосой — чистое изумление. Взгляд Киборга — холодная, острая ненависть.<br>
+            Киборг резко вскакивает и срывается с места, исчезая в толпе.</p>
+
+            <p class="text-light opacity-75">Мальвина пытается встать, потирая ушибленное место. В этот момент один из ДРОНОВ, пролетая мимо, случайно задевает её корпусом. Она вскрикивает от резкой боли.<br>
+            <em>ДРОН-1 (зависает в воздухе, робототизированный голос):</em> Извините, мисс. Идентификация цели сброшена. Для компенсации ущерба предлагаю провести диагностику травмы. Если вы не удовлетворены предложенным протоколом, можете обратиться в ближайший пункт экстренной медпомощи.<br>
+            <em>МАЛЬВИНА (в шоке, испуганно):</em> Нет... нет, не надо! Я... я в порядке.<br>
+            <em>ДРОН-1:</em> Принято. Всего доброго.</p>
+
+            <p class="text-light opacity-75">Дрон срывается вслед за целью. Мальвина остается одна. Она тянется к голове и с ужасом обнаруживает, что её наушники сломаны пополам.<br>
+            <strong>ЗАТЕМНЕНИЕ.</strong></p>
+
+            <hr class="border-secondary my-4">
+
+            <h5 class="text-info fw-bold mb-3">СЦЕНА 2. ЛОГОВО.</h5>
+            <p class="text-light opacity-75"><strong>ЭКСТ. ПЕРЕУЛОК — НОЧЬ</strong><br>
+            Киборг-девушка несется по узким коридорам между мусорными баками. Она резко останавливается у стены, тяжело дыша. На её руке рваная рана — вместо крови из-под кожи видны искрящиеся микросхемы и тонкие гидравлические трубки. Она на ходу перетягивает поврежденную конечность жгутом из армированного провода.</p>
+
+            <p class="text-light opacity-75"><strong>ВСТАВКА: ВОСПОМИНАНИЕ (ДОЛЯ СЕКУНДЫ)</strong><br>
+            Крупный план: лицо Киборга в момент столкновения с Голубоволосой. Её глаза, которые были голубыми, на мгновение меняют цвет на агрессивный темно-фиолетовый. Голубоволосая в кадре замирает от необъяснимого ужаса.</p>
+
+            <p class="text-light opacity-75"><strong>ЭКСТ. ЖИЛОЙ КОМПЛЕКС-МУРАВЕЙНИК — НОЧЬ</strong><br>
+            Здание выглядит как гигантская бетонная колонна, надстроенная поверх старого фундамента. Киборг проскальзывает в незаметный технический люк, скрытый за слоем строительного мусора.</p>
+
+            <p class="text-light opacity-75"><strong>ИНТ. СЕКРЕТНЫЙ ЭТАЖ (МЕЖДУ 11 И 12) — НОЧЬ</strong><br>
+            Это бывший чердак старого дома, оказавшийся зажатым между «старой» и «новой» частями здания. Здесь хаос: груды краденого оборудования, куски серверов, полуразобранные дроны. Жилище выглядит бедно — только стол и стул.</p>
+
+            <p class="text-light opacity-75">Киборг падает на стул, тяжело выдыхая. Она смотрит в «окно» прямо перед собой. Изнутри кажется, что она видит город во всех деталях — неоновые огни, парящие рекламные баннеры. Она наблюдает за улицами, чувствуя себя в безопасности в этой «черной дыре» архитектуры.</p>
+
+            <p class="text-light opacity-75"><strong>ФИНАЛЬНЫЙ КАДР</strong><br>
+            Камера плавно отъезжает от её лица, перемещаясь к «окну». Мы видим, как картинка города постепенно исчезает, превращаясь в серию голографических проекций, наложенных на обычную бетонную стену. На самом деле там нет никакого окна.<br>
+            <strong>Тьма. Только слабый фиолетовый свет её имплантов освещает комнату.</strong></p>
+
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}

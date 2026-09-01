@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block title %}Регистрация — Drone City{% endblock %}
+
+{% block content %}
+<section class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div class="p-5 rounded-4 shadow-lg text-white" style="background: rgba(10, 15, 30, 0.85); border: 1px solid rgba(43, 202, 255, 0.3); backdrop-filter: blur(10px);">
+
+                <h2 class="text-center mb-2 fw-bold text-white">Вход</h2>
+                <p class="text-center text-light opacity-75 mb-4">Создайте аккаунт в системе Drone City</p>
+
+                <form method="POST">
+
+                    <!-- Фамилия и Имя -->
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold text-light">Фамилия</label>
+                            <input type="text" class="form-control bg-dark text-white border-secondary" name="surname" placeholder="Фамилия" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold text-light">Имя</label>
+                            <input type="text" class="form-control bg-dark text-white border-secondary" name="name" placeholder="Имя" required>
+                        </div>
+                    </div>
+
+                    <!-- Отчество и Возраст -->
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-8">
+                            <label class="form-label fw-semibold text-light">Отчество (необязательно)</label>
+                            <input type="text" class="form-control bg-dark text-white border-secondary" name="patronymic" placeholder="Отчество">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label fw-semibold text-light">Возраст</label>
+                            <input type="number" class="form-control bg-dark text-white border-secondary" name="age" min="1" max="120" value="22" required>
+                        </div>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold text-light">Email</label>
+                        <input type="email" class="form-control bg-dark text-white border-secondary" name="email" placeholder="your@email.com" required>
+                    </div>
+
+                    <!-- Пароль -->
+                    <div class="mb-4">
+                        <label class="form-label fw-semibold text-light">Пароль</label>
+                        <input type="password" class="form-control bg-dark text-white border-secondary" name="password" placeholder="••••••••" required>
+                    </div>
+
+                    <!-- Кнопка отправки -->
+                    <button type="submit" class="btn btn-lg w-100 py-3 fs-5 shadow-lg rounded-pill fw-bold text-dark" style="background-color: #2bcaff; transition: all 0.3s ease;" onmouseover="this.style.background='#ffcc00';" onmouseout="this.style.background='#2bcaff';">
+                        Зарегистрироваться
+                    </button>
+                </form>
+
+                <div class="text-center mt-3">
+                    <p class="text-light opacity-75 small">Уже есть аккаунт? <a href="{{ url_for('login') }}" style="color: #2bcaff; text-decoration: none;">Войти</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

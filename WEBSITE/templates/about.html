@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}Поддержать Автора {% endblock %}
+
+{% block content %}
+<section class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="p-5 rounded-4 shadow-lg text-white" style="background: rgba(10, 15, 30, 0.85); border: 1px solid rgba(43, 202, 255, 0.3); backdrop-filter: blur(10px);">
+
+                <h2 class="text-center mb-2 fw-bold text-white">Поддержать автора</h2>
+                <p class="text-center text-light opacity-75 mb-4">Внесите свой вклад в развитие вселенной Drone City</p>
+
+                <form method="POST">
+
+                    <!-- Логин и Ник -->
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold text-light">Логин</label>
+                            <input type="text" class="form-control bg-dark text-white border-secondary" name="login" placeholder="Ваш логин" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold text-light">Ник</label>
+                            <input type="text" class="form-control bg-dark text-white border-secondary" name="nickname" placeholder="Отображаемый ник" required>
+                        </div>
+                    </div>
+
+                    <!-- Пароль и Возраст -->
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-8">
+                            <label class="form-label fw-semibold text-light">Пароль</label>
+                            <input type="password" class="form-control bg-dark text-white border-secondary" name="password" placeholder="••••••••" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label fw-semibold text-light">Возраст</label>
+                            <input type="number" class="form-control bg-dark text-white border-secondary" name="age" value="{{ user.age }}" min="1" max="120" required>
+                        </div>
+                    </div>
+
+
+
+                    <!-- Контакты и детали -->
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold text-light">Email</label>
+                        <input type="email" class="form-control bg-dark text-white border-secondary" value="{{ user.email }}" readonly>
+                    </div>
+
+
+
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold text-light">Комментарий</label>
+                        <textarea class="form-control bg-dark text-white border-secondary" name="comment" rows="3" placeholder="Ваше сообщение автору или пожелания по проекту..."></textarea>
+                    </div>
+
+                    <!-- Кнопка отправки -->
+                    <button type="submit" class="btn btn-lg w-100 py-3 fs-5 shadow-lg rounded-pill fw-bold text-dark" style="background-color: #2bcaff; transition: all 0.3s ease;" onmouseover="this.style.background='#ffcc00';" onmouseout="this.style.background='#2bcaff';">
+                        Поддержать проект
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

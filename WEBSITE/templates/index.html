@@ -1,0 +1,277 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Drone City DIMENTIY - Project: Emma's Vision {% endblock %}
+
+{% block content %}
+
+<!-- Стили для анимации выезда блоков -->
+<style>
+@keyframes slideFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-80px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideFromRight {
+    from {
+        opacity: 0;
+        transform: translateX(80px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.animate-left {
+    animation: slideFromLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-right {
+    animation: slideFromRight 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+</style>
+
+<!-- 1. Главный баннер -->
+<section class="text-white py-5 animate-left" style="
+    background-color: rgba(10, 15, 30, 0.85);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    position: relative;
+    margin: 20px 40px;
+">
+    <!-- Оверлей для затемнения -->
+    <div style="
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(4, 71, 102, 0.1);
+        z-index: 1;
+    "></div>
+
+    <div class="container py-5" style="position: relative; z-index: 2;">
+        <div class="row align-items-center">
+            <div class="col-lg-7">
+                <h1 class="display-4 fw-bold mb-3" style="line-height: 1.2;">
+                    DRONE CITY <br><span class="text-warning">PROJECT:</span> <span class="text-light">Emma's Vision</span>
+                </h1>
+                <p class="lead mb-4 text-light" style="font-size: 1.2rem;">
+                    Яркий киберпанк, неоновые огни, стильный дизайн, технологии, динамика и драйв.
+                </p>
+                <a href="{{ url_for('about') }}" class="btn btn-light btn-lg px-5 py-3 shadow-lg rounded-pill" style="
+                    font-size: 1.3rem;
+                    font-weight: 600;
+                    border: 2px solid #2bcaff;
+                    transition: all 0.3s ease;
+                "
+                onmouseover="this.style.transform='scale(1.05)';"
+                onmouseout="this.style.transform='scale(1)';">
+                    Продолжить
+                </a>
+            </div>
+            <div class="col-lg-5 text-center mt-4 mt-lg-0">
+                <img src="{{ url_for('static', filename='img/emmaeas.jpg') }}"
+                    alt="Глаза Эммы"
+                    class="img-fluid"
+                    style="max-width: 380px; width: 100%; height: auto; filter: drop-shadow(0 10px 25px rgba(0,0,0,0.25)); border-radius: 16px;">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 2. Направления проекта -->
+<section class="container my-5 animate-right">
+    <div class="row g-4 text-center">
+        <!-- Карточка 1: Персонажи -->
+        <div class="col-md-4">
+            <div class="p-4 rounded-4 h-100 shadow-sm" style="background: rgba(10, 15, 30, 0.85); border: 1px solid rgba(43, 202, 255, 0.3); backdrop-filter: blur(10px);">
+                <img src="{{ url_for('static', filename='img/pers.jpg') }}"
+                     alt="Персонажи"
+                     class="mb-3"
+                     style="width: 100%; height: 200px; object-fit: cover; border-radius: 16px; box-shadow: 0 6px 16px rgba(0,0,0,0.4); transition: all 0.3s ease;"
+                     onmouseover="this.style.transform='scale(1.05)';"
+                     onmouseout="this.style.transform='scale(1)';">
+                <h3 class="h5 fw-bold text-white">Персонажи</h3>
+                <p class="text-light small opacity-75">Концепция персонажей вселенной</p>
+            </div>
+        </div>
+
+        <!-- Карточка 2: Боты -->
+        <div class="col-md-4">
+            <div class="p-4 rounded-4 h-100 shadow-sm" style="background: rgba(10, 15, 30, 0.85); border: 1px solid rgba(43, 202, 255, 0.3); backdrop-filter: blur(10px);">
+                <img src="{{ url_for('static', filename='img/dron.jpg') }}"
+                     alt="Боты"
+                     class="mb-3"
+                     style="width: 100%; height: 200px; object-fit: cover; border-radius: 16px; box-shadow: 0 6px 16px rgba(0,0,0,0.4); transition: all 0.3s ease;"
+                     onmouseover="this.style.transform='scale(1.05)';"
+                     onmouseout="this.style.transform='scale(1)';">
+                <h3 class="h5 fw-bold text-white">Боты</h3>
+                <p class="text-light small opacity-75">Разработка моделей</p>
+            </div>
+        </div>
+
+        <!-- Карточка 3: Технологии -->
+        <div class="col-md-4">
+            <div class="p-4 rounded-4 h-100 shadow-sm" style="background: rgba(10, 15, 30, 0.85); border: 1px solid rgba(43, 202, 255, 0.3); backdrop-filter: blur(10px);">
+                <img src="{{ url_for('static', filename='img/tecno.jpg') }}"
+                     alt="Технологии"
+                     class="mb-3"
+                     style="width: 100%; height: 200px; object-fit: cover; border-radius: 16px; box-shadow: 0 6px 16px rgba(0,0,0,0.4); transition: all 0.3s ease;"
+                     onmouseover="this.style.transform='scale(1.05)';"
+                     onmouseout="this.style.transform='scale(1)';">
+                <h3 class="h5 fw-bold text-white">Технологии</h3>
+                <p class="text-light small opacity-75">Цифровой дизайн и концепты</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 3. Концепция -->
+<section class="my-5 animate-left">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 text-center p-4 rounded-4 shadow-sm" style="background: rgba(10, 15, 30, 0.85); border: 1px solid rgba(43, 202, 255, 0.3); backdrop-filter: blur(10px);">
+                <h2 class="fw-bold text-white mb-2" style="font-size: 2rem;">Концепция</h2>
+                <p class="text-light opacity-75 fs-5 mb-0">Проекция будущего</p>
+            </div>
+        </div>
+    </div>
+    <div class="text-center mb-5"></div>
+    <div class="container">
+        <div class="row g-5 justify-content-center">
+            {% for concept in [
+                'Кибернетические системы',
+                'Городская среда',
+                'Дизайн персонажей',
+                'Дроны и технологии',
+                'Атмосфера и стиль',
+                'Интерактивный мир'
+            ] %}
+            <div class="col-md-6 col-lg-4">
+                <div class="text-center p-5 rounded-4 shadow-sm h-100"
+                     style="background: rgba(10, 15, 30, 0.85); border: 1px solid rgba(43, 202, 255, 0.3); backdrop-filter: blur(10px); transition: all 0.3s ease;"
+                     onmouseover="this.style.transform='scale(1.03)';"
+                     onmouseout="this.style.transform='scale(1)';">
+                    <h3 class="mb-4 text-white" style="font-size: 1.5rem; font-weight: 600;">
+                        {{ concept }}
+                    </h3>
+                    <a href="{{ url_for('services') }}"
+                       class="btn btn-outline-light btn-sm px-4 rounded-pill"
+                       style="border-color: #2bcaff; color: #2bcaff;">
+                        Подробнее
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- 4. Персонажи проекта -->
+<section class="py-5 my-5 rounded-4 animate-right" style="background: rgba(10, 15, 30, 0.85); border: 1px solid rgba(43, 202, 255, 0.2); margin: 0 30px;">
+    <div class="container text-center mb-5">
+        <h2 class="fw-bold text-white">Персонажи</h2>
+        <p class="text-light opacity-75">Проекция будущего.</p>
+    </div>
+    <div class="container">
+        <div class="row g-4 align-items-center justify-content-center">
+
+            <!-- Персонаж 1: Мальвина -->
+            <div class="col-md-4">
+                <a href="{% if current_user.is_authenticated %}{{ url_for('character_malvina') }}{% else %}{{ url_for('login') }}{% endif %}" class="text-decoration-none">
+                    <div class="card shadow-sm h-100 character-card" style="background: rgba(15, 22, 42, 0.9); border: 1px solid rgba(43, 202, 255, 0.2); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                        <div class="card-body text-center p-4">
+                            <img src="{{ url_for('static', filename='img/mal.jpg') }}"
+                                 alt="Мальвина"
+                                 class="rounded-3 mb-3 w-100"
+                                 style="height: 330px; object-fit: cover; object-position: center; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);">
+                            <h5 class="card-title fw-bold text-white">Мальвина</h5>
+                            <p class="text-light small opacity-75 mb-0">Дизайнер</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Персонаж 2: Эмма -->
+            <div class="col-md-4" style="transform: translateY(-35px);">
+                <a href="{% if current_user.is_authenticated %}{{ url_for('character_malvina') }}{% else %}{{ url_for('login') }}{% endif %}" class="text-decoration-none">
+                    <div class="card shadow-sm h-100 character-card" style="background: rgba(15, 22, 42, 0.9); border: 1px solid rgba(43, 202, 255, 0.3); box-shadow: 0 15px 30px rgba(43, 202, 255, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                        <div class="card-body text-center p-4">
+                            <img src="{{ url_for('static', filename='img/emma.jpg') }}"
+                                 alt="Эмма"
+                                 class="rounded-3 mb-3 w-100"
+                                 style="height: 330px; object-fit: cover; object-position: center; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);">
+                            <h5 class="card-title fw-bold text-white">Эмма</h5>
+                            <p class="text-light small opacity-75 mb-0">Киборг</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Персонаж 3: Энтони -->
+            <div class="col-md-4">
+                <a href="{% if current_user.is_authenticated %}{{ url_for('character_malvina') }}{% else %}{{ url_for('login') }}{% endif %}" class="text-decoration-none">
+                    <div class="card shadow-sm h-100 character-card" style="background: rgba(15, 22, 42, 0.9); border: 1px solid rgba(43, 202, 255, 0.2); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                        <div class="card-body text-center p-4">
+                            <img src="{{ url_for('static', filename='img/anton.jpg') }}"
+                                 alt="Энтони"
+                                 class="rounded-3 mb-3 w-100"
+                                 style="height: 330px; object-fit: cover; object-position: center; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);">
+                            <h5 class="card-title fw-bold text-white">Энтони</h5>
+                            <p class="text-light small opacity-75 mb-0">Инженер</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Стиль для эффекта приближения (hover) -->
+<style>
+    .character-card:hover {
+        transform: scale(1.05);
+        border-color: #2bcaff !important;
+        box-shadow: 0 10px 25px rgba(43, 202, 255, 0.3) !important;
+    }
+</style>
+
+<!-- 5. Финальный призыв -->
+<section class="text-center my-5 animate-left">
+    <div class="d-inline-block px-5 py-3 rounded-4 mb-4" style="background: rgba(15, 22, 42, 0.7); border: 1px solid rgba(43, 202, 255, 0.4); backdrop-filter: blur(5px);">
+        <h2 class="fw-bold text-white m-0">Продолжим?</h2>
+    </div>
+    <div>
+        <a href="{{ url_for('about') }}" class="btn rounded-pill px-4 py-2" style="
+            font-size: 1.1rem;
+            background: rgba(15, 22, 42, 0.6);
+            border: 1px solid rgba(43, 202, 255, 0.4);
+            color: #2bcaff;
+            font-weight: 500;
+            text-decoration: none;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        "
+        onmouseover="this.style.background='#2bcaff'; this.style.color='#0a0f1e'; this.style.borderColor='#2bcaff'; this.style.transform='scale(1.05)';"
+        onmouseout="this.style.background='rgba(15, 22, 42, 0.6)'; this.style.color='#2bcaff'; this.style.borderColor='rgba(43, 202, 255, 0.4)'; this.style.transform='scale(1)';"
+        onmousedown="this.style.transform='scale(0.98)';"
+        onmouseup="this.style.transform='scale(1.05)';">
+            Узнать больше о проекте
+        </a>
+    </div>
+</section>
+
+{% endblock %}

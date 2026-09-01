@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% block title %}Вход {% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-5">
+            <!-- Карточка с полупрозрачным темным фоном и размытием, как на главной -->
+            <div class="p-5 rounded-4 shadow-lg" style="
+                background: rgba(10, 15, 30, 0.85);
+                border: 1px solid rgba(43, 202, 255, 0.3);
+                backdrop-filter: blur(10px);
+            ">
+                <div class="text-center mb-4">
+                    <h2 class="fw-bold text-white mb-2">Вход в аккаунт</h2>
+                    <p class="text-light opacity-75 small">Чтобы узнать больше о проекте, войдите или зарегистрируйтесь</p>
+                </div>
+
+                <form method="POST">
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold text-white" style="font-size: 0.9rem;">Email</label>
+                        <input type="email"
+                               class="form-control py-2 text-white"
+                               name="email"
+                               required
+                               value="{{ request.form['email'] if request.form.get('email') else '' }}"
+                               style="
+                                   background: rgba(15, 22, 42, 0.7);
+                                   border: 1px solid rgba(43, 202, 255, 0.4);
+                                   border-radius: 8px;
+                               "
+                               placeholder="your@email.com">
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label fw-semibold text-white" style="font-size: 0.9rem;">Пароль</label>
+                        <input type="password"
+                               class="form-control py-2 text-white"
+                               name="password"
+                               required
+                               style="
+                                   background: rgba(15, 22, 42, 0.7);
+                                   border: 1px solid rgba(43, 202, 255, 0.4);
+                                   border-radius: 8px;
+                               "
+                               placeholder="••••••••">
+                    </div>
+
+                    <button type="submit"
+                            class="btn w-100 py-2 fw-medium rounded-pill"
+                            style="
+                                background: #2bcaff;
+                                border: none;
+                                color: #0a0f1e;
+                                font-weight: 600;
+                                transition: all 0.3s ease;
+                            "
+                            onmouseover="this.style.transform='scale(1.02)';"
+                            onmouseout="this.style.transform='scale(1)';">
+                        Войти в аккаунт
+                    </button>
+                </form>
+
+                <div class="text-center mt-4 pt-3 border-top" style="border-color: rgba(43, 202, 255, 0.2) !important;">
+                    <p class="text-light opacity-75 small mb-0">
+                        Нет аккаунта? <a href="{{ url_for('register') }}" class="fw-semibold text-decoration-none" style="color: #2bcaff;">Поддержать Автора</a>
+                    </p>
+                </div>
+            </div>
+
+            <p class="text-center mt-3 text-light opacity-75 small">
+                <i class="fas fa-shield-alt me-1" style="color: #2bcaff;"></i>
+                Безопасный вход • Данные защищены
+            </p>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Стиль для плейсхолдеров, чтобы они были видны на темном фоне */
+    .form-control::placeholder {
+        color: rgba(255, 255, 255, 0.5) !important;
+    }
+    .form-control:focus {
+        background: rgba(15, 22, 42, 0.9) !important;
+        color: #fff !important;
+        border-color: #2bcaff !important;
+        box-shadow: 0 0 10px rgba(43, 202, 255, 0.4) !important;
+    }
+</style>
+{% endblock %}
